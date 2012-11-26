@@ -1,0 +1,50 @@
+.section-business-branding{
+	
+	.content{ 
+		z-index:10; 
+	}
+	h1 a:hover{
+		color: @pl-link;
+	}
+	.branding_wrap{
+		position: relative;
+		zoom:1;
+	}
+	.mainlogo-link, .mainlogo-img {
+			max-width: 100%;
+			display: inline-block;
+			vertical-align: top;
+		}
+	.title-container {
+		display: inline-block;
+		a.site-title:hover {
+			opacity: 0.5;
+		}
+		
+	}
+	
+	.business-info{
+		display: inline-block;
+		float: right;
+		p {
+			margin: 0;
+		}
+		.icons{
+			margin-top: 10px;
+			line-height: 20px;
+			height: 24px;
+			a{
+				width: 24px; 
+				height: 24px; 
+				margin-left: 8px; 
+				opacity: 0.5;
+			}
+		}
+	}	
+}
+
+@media screen and (max-width:480px) {
+	.section-business-branding{
+		.business-info{float: left;}
+	}
+}
