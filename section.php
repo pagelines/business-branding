@@ -215,9 +215,9 @@ class BusinessBranding extends PageLinesSection {
 			
 			echo'<div class="branding_wrap fix">';
 				pagelines_main_logo(); 
-				printf('<div class="title-container" style="margin: %spx 0 0 %spx;">', $branding_top, $branding_left);
+				echo '<div class="title-container" >';
 				if(ploption('business_name'))
-						printf( '<div class="site-title"><a class="home site-title" href="%s" title="%s">%s</a></div>',  esc_url(home_url()), __('Home','pagelines'), get_bloginfo('name'));
+						printf( '<div class="site-title" style="margin: %spx 0 0 %spx;"><a class="home site-title" href="%s" title="%s">%s</a></div>',  $branding_top, $branding_left, esc_url(home_url()), __('Home','pagelines'), get_bloginfo('name'));
 				if(ploption('business_description'))
 					printf( '<h6 class="site-description subhead">%s</h6>',  get_bloginfo('description'));						
 					echo '</div>';	
