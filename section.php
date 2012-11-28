@@ -219,7 +219,7 @@ class BusinessBranding extends PageLinesSection {
 				if(ploption('business_name'))
 						printf( '<div class="site-title" style="margin: %spx 0 0 %spx;"><a class="home site-title" href="%s" title="%s">%s</a></div>',  $branding_top, $branding_left, esc_url(home_url()), __('Home','pagelines'), get_bloginfo('name'));
 				if(ploption('business_description'))
-					printf( '<h6 class="site-description subhead">%s</h6>',  get_bloginfo('description'));						
+					printf( '<h6 class="site-description subhead" style="margin-left: %spx;">%s</h6>',  $branding_left, get_bloginfo('description'));						
 					echo '</div>';	
 			
 				pagelines_register_hook( 'pagelines_before_branding_icons', 'branding' ); // Hook 
