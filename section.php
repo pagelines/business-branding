@@ -6,6 +6,7 @@
 	Description: Branding with Business Information Section.
 	Class Name: BusinessBranding
 	Workswith: header 
+	Demo: http://pagelines.ellenjanemoore.com/business-branding/
 */
 
 /**
