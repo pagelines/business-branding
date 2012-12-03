@@ -1,0 +1,18 @@
+== Description ==
+
+Business Branding is a robust branding section giving you more options than the standard Pagelines Branding.  
+
+<h3>Features</h3>
+<strong>Display your Logo and Site Title</strong> Choose to display your site title/description with your logo. Or, display just your logo or just your site title.  Your choice.
+
+<strong>Additional Business Information and Social Icons</strong> Add up to 3 lines of text to display with social icons.
+
+<strong>Specify Tabs</strong> Display up to 6 tabs, each with their own content.
+
+<strong>Color Control</strong> Change the background color of the branding section along with text colors for site title and additional business information.
+
+<strong>Positioning of Elements</strong> Position the site title and additional business information to create an eye-catching branding area.
+
+= 1.0 =
+* Initial release. 
+
