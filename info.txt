@@ -7,7 +7,6 @@ Business Branding is a robust branding section giving you more options than the 
 
 <strong>Additional Business Information and Social Icons</strong> Add up to 3 lines of text to display with social icons.
 
-<strong>Specify Tabs</strong> Display up to 6 tabs, each with their own content.
 
 <strong>Color Control</strong> Change the background color of the branding section along with text colors for site title and additional business information.
 
