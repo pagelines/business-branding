@@ -12,6 +12,17 @@ Business Branding is a robust branding section giving you more options than the 
 
 <strong>Positioning of Elements</strong> Position the site title and additional business information to create an eye-catching branding area.
 
+
+= 1.1 =
+
+* Changelog
+
+Added class for additional text for easier styling .business-info-text
+Changed positioning of icons to relative from absolute
+Changed default background to Pagelines page background 
+
 = 1.0 =
 * Initial release. 
+
+
 

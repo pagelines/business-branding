@@ -1,11 +1,12 @@
 <?php
 /*
 	Section: Business Branding
-	Author: elSue
-	Author URI: http://www.elsue.com
+	Author: Ellen Moore
+	Author URI: http://pagelines.ellenjanemoore.com/
 	Description: Branding with Business Information Section.
 	Class Name: BusinessBranding
 	Workswith: header 
+	Version: 1.1
 	Demo: http://pagelines.ellenjanemoore.com/business-branding/
 */
 
@@ -161,7 +162,7 @@ class BusinessBranding extends PageLinesSection {
 						'layout'		=> 'full',
 						'selectvalues'	=> array(
 							'business_branding_background' => array(		
-								'default' 		=> '#ffffff',
+								'default' 		=> '@pl-base',
 								'css_prop'		=> 'background-color',
 								'selectors'		=> '#page .section-business-branding',
 								'inputlabel' 	=> __( 'Background Color', 'business-branding' ),
@@ -229,14 +230,14 @@ class BusinessBranding extends PageLinesSection {
 
 				printf('<div class="business-info" style="margin-top: %spx; text-align: %s;">', $business_info_top, $business_info_justify);
 
-			
+				echo'<div class="business-info-text">';
 				if (ploption('business_info_line1')) 
 					printf('<%s>%s</%s>' , $business_line1_style, $business_line1, $business_line1_style);
 				if (ploption('business_info_line2')) 
 					printf('<%s>%s</%s>' , $business_line2_style, $business_line2, $business_line2_style);
 				if (ploption('business_info_line3'))
 					printf('<%s>%s</%s>' , $business_line3_style, $business_line3, $business_line3_style);
-					
+				echo'</div>';	
 				
 				echo '<div class="icons">';
 					
