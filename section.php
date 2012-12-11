@@ -6,7 +6,7 @@
 	Description: Branding with Business Information Section.
 	Class Name: BusinessBranding
 	Workswith: header 
-	Version: 1.1
+	Version: 1.1.1
 	Demo: http://pagelines.ellenjanemoore.com/business-branding/
 */
 
@@ -164,7 +164,7 @@ class BusinessBranding extends PageLinesSection {
 							'business_branding_background' => array(		
 								'default' 		=> '@pl-base',
 								'css_prop'		=> 'background-color',
-								'selectors'		=> '#page .section-business-branding',
+								'selectors'		=> '#page .section-business-branding, #page .section-business-branding .content',
 								'inputlabel' 	=> __( 'Background Color', 'business-branding' ),
 							),
 							'business_branding_color' => array(		
