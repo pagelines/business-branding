@@ -12,20 +12,41 @@
 	}
 	.mainlogo-link, .mainlogo-img {
 			max-width: 100%;
-			display: inline-block;
+			float: left;
 			vertical-align: top;
 		}
 	.title-container {
-		display: inline-block;
-		a.site-title:hover {
-			opacity: 0.5;
+		float: left;
+		.site-title {
+			float:left;
 		}
-		
 	}
+	.branding-area-container {
+		float:left;
+		
+		.title-container {
+			float: left;
+			margin: @business-top 0 0 @business-left;
+			.site-title {
+				float:left;
+			}
+				a.site-title:hover {
+					opacity: 0.5;
+			}
+		}
+		.branding-area-extra {
+			display: inline-block;
+			margin: @branding-top 0 0 @branding-left;
+			.branding-area-code {
+				display: inline-block;
+			}
+		}	
+	}	
 	
 	.business-info{
-		display: inline-block;
 		float: right;
+		margin-top: @info-top;
+		text-align: @info-justify;
 		p {
 			margin: 0;
 		}
@@ -48,5 +69,13 @@
 @media (max-width:480px) {
 	.section-business-branding{
 		.business-info{float: left;}
+		.branding-area-container {
+			.title-container {
+			margin: 0;
+		}
+		.branding-area-extra {
+			margin: 0;
+		}
+		}
 	}
 }

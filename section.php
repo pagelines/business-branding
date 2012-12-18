@@ -20,33 +20,82 @@ class BusinessBranding extends PageLinesSection {
 	
 	function section_persistent() {
 		add_filter('pagelines_options_array', array(&$this, 'business_branding'));
+		add_filter( 'pless_vars', array(&$this,'business_branding_less_vars'));
+		add_filter ( 'pagelines_settings_whitelist', 'business_branding_whitelist' );
+		function business_branding_whitelist($whitelist) {
+		$business_branding_code = array('branding_area_code', 'business_info_line1', 'business_info_line2', 'business_info_line3' );
+		return array_merge( $whitelist, $business_branding_code );
+		}
 	}
 	function business_branding($options) {
 		if( defined( 'THEMENAME'  ) && 'PageLines' == THEMENAME  ) {
 		$options_array['business_branding'] = array(// this is the tab title
-					'business_display'			=> array(
-						'type' 					=> 	'check_multi',
-						'layout'				=>	'full',
-						'selectvalues'			=> array(
-							'business_name'			=> array('inputlabel' => __('Show Site Title' , 'business-branding')),
-							'business_description'	=> array('inputlabel' => __('Show Site Description' , 'business-branding')),
+				'business_display_block'				=> array(
+					'type'					=> 'multi_option',
+					'selectvalues'			=> array(
+							'business_display'			=> array(
+								'type' 					=> 	'check_multi',
+
+								'selectvalues'			=> array(
+									'business_name'			=> array('inputlabel' => __('Show Site Title with Logo' , 'business-branding')),
+									'business_description'	=> array('inputlabel' => __('Show Site Description with Logo' , 'business-branding')),
+
+									),
+								),
+								'business_name_position'	=> array(
+									'type' 					=> 	'text_multi',
+									'layout'				=>	'full',
+									'inputsize'				=> 'tiny',
+									'selectvalues'			=> array(
+										'business_name_top'		=> array('inputlabel' => __('Margin Top in Pixels (Default 10)' , 'business-branding'), 'default'	=> 10),
+										'business_name_left'	=> array('inputlabel' => __('Margin Left in Pixels (Default 10)' , 'business-branding'), 'default'	=> 10),
+									),
+										'shortexp' 				=> __( 'Use these options to position the site title with the logo', 'business-branding' ),
+										'exp'					=> __('The positioning is only for when the site title/description is displayed with the logo.')
+									),
+
+			),
+
+					'title' 				=> __( 'Display Site Title/Description with Logo', 'business-branding' ),						
+					'shortexp' 				=> __( 'Only use this option if you uploaded a logo through Pagelines Website Setup options' , 'business-branding' ),
+					'exp'					=> __('Logo is uploaded through Website Setup. Do not use the Show Site Title/Description options if you have no logo displayed, otherwise Site Title/Description will display twice.')
+				),
+
+			'branding_area_block'				=> array(
+				'type'					=> 'multi_option',
+				'selectvalues'			=> array(
+					'branding_area_image'		=> array(
+							'type' 				=> 'image_upload',
+							'inputlabel' 		=> __( 'Upload Image to display in branding area. Will display next to logo and/or site title/description', 'business-branding' ),
+							'shortexp'	 		=> __( 'Upload an image to use next to logo or site title', 'business-branding' ),
+							'exp' 				=> ''
+
+							),
+					'branding_area_code'		=> array(
+						'type' 					=> 'textarea',
+						'inputlabel' 			=> __( 'Enter iframe or HTML code here. Great for affiliate banners.', 'business-branding' ),
+						'shortexp'	 			=> __( 'Enter iframe or HTML Code for branding area', 'business-branding' ),
+						'exp' 					=> ''
 						),
-						'title' 				=> __( 'Show Site Title & Description', 'business-branding' ),						
-						'shortexp' 				=> __( 'Check if you want to show Site Title and/or Description next to Logo. Only use this option if uploaded a logo in Website Setup', 'business-branding' ),
-						'exp'					=> __('Only check these options if you are using a logo uploaded in Website Setup. If you did not upload a logo, do not use this section otherwise the site title and description will display twice.')
-					),
-					'business_name_position'	=> array(
+
+					'branding_area_position'	=> array(
 						'type' 					=> 	'text_multi',
 						'layout'				=>	'full',
 						'inputsize'				=> 'tiny',
 						'selectvalues'			=> array(
-							'business_name_top'		=> array('inputlabel' => __('Margin Top in Pixels (Default 10)' , 'business-branding'), 'default'	=> 10),
-							'business_name_left'	=> array('inputlabel' => __('Margin Left in Pixels (Default 10)' , 'business-branding'), 'default'	=> 10),
-						),
-						'title' 				=> __( 'Position of Business Branding Elements', 'business-branding' ),						
-						'shortexp' 				=> __( 'Use these options to position the site title with the logo', 'business-branding' ),
-						'exp'					=> __('The positioning is only for when the site title/description is displayed with the logo.')
-					),
+							'branding_area_top'		=> array('inputlabel' => __('Margin Top in Pixels (Default 10)' , 'business-branding'), 'default'	=> 10),
+							'branding_area_left'	=> array('inputlabel' => __('Margin Left in Pixels (Default 10)' , 'business-branding'), 'default'	=> 10),
+						),	
+					'shortexp' 				=> __( 'Position image or code in relation to logo/site title', 'business-branding' ),
+					'exp'					=> __('Use these options to position your image or code.')
+				),
+			),
+
+			'title' 				=> __( 'Branding Area Extras', 'business-branding' ),						
+			'shortexp' 				=> __( 'Use these options to upload an image or use a little custom code to display affiliate banners' ),
+			'exp'					=> __('Some code is fine, like an iframe for an affiliate banner.')
+		),
+				
 					'business_info'				=> array(
 						'type'					=> 'multi_option',
 						'selectvalues'			=> array(
@@ -162,7 +211,7 @@ class BusinessBranding extends PageLinesSection {
 						'layout'		=> 'full',
 						'selectvalues'	=> array(
 							'business_branding_background' => array(		
-								'default' 		=> '@pl-base',
+								'default' 		=> '',
 								'css_prop'		=> 'background-color',
 								'selectors'		=> '#page .section-business-branding, #page .section-business-branding .content',
 								'inputlabel' 	=> __( 'Background Color', 'business-branding' ),
@@ -187,56 +236,88 @@ class BusinessBranding extends PageLinesSection {
 		return $options;
 	}
 	}
-	
+	// Custom LESS Vars
+	function business_branding_less_vars($less){
 
-	
+		$business_top = (ploption('business_name_top')) ? ploption('business_name_top').'px' : '10px';
+		$business_left = (ploption('business_name_left')) ? ploption('business_name_left').'px' : '10px';
+		$branding_top = (ploption('branding_area_top')) ? ploption('branding_area_top').'px' : '10px';
+		$branding_left = (ploption('branding_area_left')) ? ploption('branding_area_left').'px' : '10px';
+		$info_top = (ploption('business_info_top')) ? ploption('business_info_top').'px' : '10px';
+		$info_justify = (ploption('business_info_justify')) ? ploption('business_info_justify') : 'right';
+		$less['business-top']  = $business_top;
+		$less['business-left']  = $business_left;
+		$less['branding-top']  = $branding_top;
+		$less['branding-left']  = $branding_left;
+		$less['info-top']  = $info_top;
+		$less['info-justify']  = $info_justify;
+
+		return $less;
+	}
+
 	/**
 	* Section template.
 	*/
    function section_template() { 
-	
+
+
 	// Setup option values
-	
-	$branding_top = (ploption('business_name_top', $this->oset)) ? ploption('business_name_top', $this->oset) : 10;
-	$branding_left = (ploption('business_name_left', $this->oset)) ? ploption('business_name_left', $this->oset) : 10;
+
+
+
 	$business_line1 = ploption('business_info_line1');
 	$business_line2 = ploption('business_info_line2');
 	$business_line3 = ploption('business_info_line3');
 	$business_line1_style = (ploption('business_info_line1_style', $this->oset)) ? ploption('business_info_line1_style', $this->oset) : 'h2';
 	$business_line2_style = (ploption('business_info_line2_style', $this->oset)) ? ploption('business_info_line2_style', $this->oset) : 'h3';
 	$business_line3_style = (ploption('business_info_line3_style', $this->oset)) ? ploption('business_info_line3_style', $this->oset) : 'h3';
-	$business_info_top = (ploption('business_info_top', $this->oset)) ? ploption('business_info_top', $this->oset) : 10;
-	$business_info_justify = (ploption('business_info_justify', $this->oset)) ? ploption('business_info_justify', $this->oset) : 'right';
-	$business_info_color = (ploption('business_info_color', $this->oset)) ? ploption('business_info_color', $this->oset) : '000000';
-	
-	
-	
+	$branding_code = ploption('branding_area_code');
+	$branding_area_image = ploption('branding_area_image');
+	$business_image_info = ploption('business_info_image');
+
+
+
 		// Draw the Template
-		
+
 			// Branding Logo, Site Title and Description
-			
-			echo'<div class="branding_wrap fix">';
-				pagelines_main_logo(); 
-				echo '<div class="title-container" >';
-				if(ploption('business_name'))
-						printf( '<div class="site-title" style="margin: %spx 0 0 %spx;"><a class="home site-title" href="%s" title="%s">%s</a></div>',  $branding_top, $branding_left, esc_url(home_url()), __('Home','pagelines'), get_bloginfo('name'));
-				if(ploption('business_description'))
-					printf( '<h6 class="site-description subhead" style="margin-left: %spx;">%s</h6>',  $branding_left, get_bloginfo('description'));						
-					echo '</div>';	
-			
-				pagelines_register_hook( 'pagelines_before_branding_icons', 'branding' ); // Hook 
-				
+
+				echo'<div class="branding_wrap fix">';
+					pagelines_main_logo(); 
+					echo '<div class=branding-area-container>';
+					echo '<div class=title-container>';
+					if(ploption('business_name'))
+							printf( '<div class="site-title"><a class="home site-title" href="%s" title="%s">%s</a></div>',   esc_url(home_url()), __('Home','pagelines'), get_bloginfo('name'));
+					if(ploption('business_description'))
+						printf( '<h6 class="site-description subhead">%s</h6>',  get_bloginfo('description'));						
+						echo '</div>';
+					echo '<div class=branding-area-extra>';
+					if(ploption('branding_area_code'))
+						printf('<div class=branding-area-code>%s</div>', do_shortcode($branding_code));
+						if (ploption('branding_area_image')) 
+							printf('<img src="%s">', $branding_area_image);	
+					echo '</div></div>';				
+
+					pagelines_register_hook( 'pagelines_before_branding_icons', 'branding' ); // Hook 
+
+
+
+
+
 				// Business Info and Social Icons
 
-				printf('<div class="business-info" style="margin-top: %spx; text-align: %s;">', $business_info_top, $business_info_justify);
+
+
+				echo'<div class="business-info">';
 
 				echo'<div class="business-info-text">';
+				if (ploption('business_info_image')) 
+					printf('<img src="%s">', $business_image_info);
 				if (ploption('business_info_line1')) 
-					printf('<%s>%s</%s>' , $business_line1_style, $business_line1, $business_line1_style);
+					printf('<%s>%s</%s>' , $business_line1_style, do_shortcode($business_line1), $business_line1_style);
 				if (ploption('business_info_line2')) 
-					printf('<%s>%s</%s>' , $business_line2_style, $business_line2, $business_line2_style);
+					printf('<%s>%s</%s>' , $business_line2_style, do_shortcode($business_line2), $business_line2_style);
 				if (ploption('business_info_line3'))
-					printf('<%s>%s</%s>' , $business_line3_style, $business_line3, $business_line3_style);
+					printf('<%s>%s</%s>' , $business_line3_style, do_shortcode($business_line3), $business_line3_style);
 				echo'</div>';	
 				
 				echo '<div class="icons">';
