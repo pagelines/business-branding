@@ -1,11 +1,20 @@
 == Description ==
 
-Business Branding is a robust branding section giving you more options than the standard Pagelines Branding.  
+Business Branding is a robust branding section giving you more options than the standard Pagelines Branding. 
+
+<h3>New in Version 2.0</h3>
+
+<strong>Image and HTML Code Options</strong> Upload an image or enter in your html code for an affiliate banner to display along with your logo/site title.
+
+<strong>More Options for Additional Information</strong> Now you can upload an image to display in this area. You can also use shortcodes - useful for buttons - and some html code in the text.
 
 <h3>Features</h3>
+
 <strong>Display your Logo and Site Title</strong> Choose to display your site title/description with your logo. Or, display just your logo or just your site title.  Your choice.
 
-<strong>Additional Business Information and Social Icons</strong> Add up to 3 lines of text to display with social icons.
+<strong>Image and HTML Code Options</strong> Now you can put that affiliate banner or image in your branding area. 
+
+<strong>Additional Business Information and Social Icons</strong> Add up to 3 lines of text to display and/or an image with social icons. 
 
 
 <strong>Color Control</strong> Change the background color of the branding section along with text colors for site title and additional business information.
@@ -14,6 +23,13 @@ Business Branding is a robust branding section giving you more options than the 
 
 
 == Changelog ==
+
+= 2.0 =
+
+Added options to upload image or add HTML code to display next to logo/site title
+Ability to upload image in additional information area
+Can use some html and shortcodes in additional information text
+CSS improvements
 
 = 1.1.1 =
 
@@ -27,7 +43,6 @@ Changed positioning of icons to relative from absolute
 Changed default background to Pagelines page background 
 
 = 1.0 =
-* Initial release. 
-
+* Initial release.
 
 
