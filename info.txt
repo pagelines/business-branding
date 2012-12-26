@@ -24,6 +24,10 @@ Business Branding is a robust branding section giving you more options than the 
 
 == Changelog ==
 
+= 2.0.1 =
+
+Fixed: Changed css for site description to display correctly in IE
+
 = 2.0 =
 
 Added options to upload image or add HTML code to display next to logo/site title
