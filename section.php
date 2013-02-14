@@ -6,7 +6,7 @@
 	Description: Branding with Business Information Section.
 	Class Name: BusinessBranding
 	Workswith: header 
-	Version: 2.0.1
+	Version: 2.1
 	Demo: http://pagelines.ellenjanemoore.com/business-branding/
 */
 
@@ -281,10 +281,10 @@ class BusinessBranding extends PageLinesSection {
 
 			// Branding Logo, Site Title and Description
 
-				echo'<div class="branding_wrap fix">';
+				echo'<div class="branding_wrap fix"><div class="business-logo">';
 					pagelines_main_logo(); 
-					echo '<div class=branding-area-container>';
-					echo '<div class=title-container>';
+					echo '</div><div class="branding-area-container">';
+					echo '<div class="title-container">';
 					if(ploption('business_name'))
 							printf( '<div class="site-title"><a class="home site-title" href="%s" title="%s">%s</a></div>',   esc_url(home_url()), __('Home','pagelines'), get_bloginfo('name'));
 					if(ploption('business_description'))
