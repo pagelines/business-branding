@@ -6,7 +6,7 @@
 	Description: Branding with Business Information Section.
 	Class Name: BusinessBranding
 	Workswith: header 
-	Version: 2.1
+	Version: 2.2
 	Demo: http://pagelines.ellenjanemoore.com/business-branding/
 */
 
@@ -22,10 +22,30 @@ class BusinessBranding extends PageLinesSection {
 		add_filter('pagelines_options_array', array(&$this, 'business_branding'));
 		add_filter( 'pless_vars', array(&$this,'business_branding_less_vars'));
 		add_filter ( 'pagelines_settings_whitelist', 'business_branding_whitelist' );
+		add_filter('pagelines_site_logo', array(&$this, 'logo_schema'));
+
 		function business_branding_whitelist($whitelist) {
 		$business_branding_code = array('branding_area_code', 'business_info_line1', 'business_info_line2', 'business_info_line3' );
 		return array_merge( $whitelist, $business_branding_code );
 		}
+	}
+
+	function logo_schema(){
+
+			$logo = apply_filters('pagelines_logo_url', esc_url(ploption('pagelines_custom_logo', $this->oset) ));
+
+
+		$logo_url = ( esc_url(ploption('pagelines_custom_logo_url', $this->oset) ) ) ? esc_url(ploption('pagelines_custom_logo_url', $$this->oset) ) : home_url();
+
+			printf('<div itemscope itemtype="http://schema.org/Organization"><a class="plbrand mainlogo-link" itemprop="url" href="%s" title="%s"><img class="mainlogo-img" itemprop="logo" src="%s" alt="%s" /></a></div>',
+			$logo_url,
+			get_bloginfo('name'),
+			$logo,
+			get_bloginfo('name')
+		);
+
+		
+
 	}
 	function business_branding($options) {
 		if( defined( 'THEMENAME'  ) && 'PageLines' == THEMENAME  ) {

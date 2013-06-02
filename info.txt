@@ -25,6 +25,10 @@ Business Branding is a robust branding section giving you more options than the 
 
 == Changelog ==
 
+= 2.2 =
+
+* Added schema.org Organization markup to logo
+
 = 2.1 =
  
 * Fixed: Removed height from icon class to fix spacing when no social icons or rss feed are displayed. This could narrow the spacing between the bottom of the Business Branding Section and next section (possibly your navigation) especially if you already have made a css adjustment to close the spacing. To restore the height remove any adjustment you have made and/or uncomment the Version 2.1 items in style.less.
