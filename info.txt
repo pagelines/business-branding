@@ -25,6 +25,10 @@ Business Branding is a robust branding section giving you more options than the 
 
 == Changelog ==
 
+= 3.0 =
+* New: DMS Version 
+* Fixed: Logo image box showing when no image
+
 = 2.2 =
 
 * Added schema.org Organization markup to logo

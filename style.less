@@ -1,5 +1,18 @@
 .section-business-branding{
 	
+	a.home.site-title{
+		display: block;
+		margin: .3em 0 .15em;
+		font-size: 2.6em;
+		line-height: 1.1em;
+	}
+	
+	a.home.bb-site-title{
+		display: block;
+		
+		font-size: 2.6em;
+		line-height: 1.1em;
+	}
 	.content{ 
 		z-index:10; 
 	}
@@ -10,6 +23,7 @@
 		position: relative;
 		zoom:1;
 	}
+	
 	.business-logo {
 			max-width: 100%;
 			float: left;
@@ -18,9 +32,17 @@
 	.title-container {
 		float: left;
 		.site-title {
+
 		
 		}
+
+	.site-description {
+		margin-left: .2em;
+		font-size: 86%;
+		
 	}
+		}
+		
 	.branding-area-container {
 		float:left;
 		
@@ -30,6 +52,8 @@
 			.site-title {
 				
 			}
+			// Is this used in Brandnav?
+	
 				a.site-title:hover {
 					opacity: 0.5;
 			}
@@ -65,6 +89,83 @@
 				opacity: 0.5;
 			}
 		}
-	}	
+	}
+	.bb_branding_wrap {
+		position: relative;
+		padding: 0 20px 0 0;
+
+	}
+	.bb-business-logo {
+			max-width: 100%;
+			float: left;
+			margin-left: 10px;
+			vertical-align: top;
+		}
+	.bb-title-container {
+		float: left;
+		.bb-site-title {
+
+		}
+
+	.bb-site-description {
+		margin-left: .2em;
+		font-size: 86%;
+		
+	}
+		}
+
+	.bb-business-info{
+		float: right;
+		
+		p {
+			margin: 0;
+		}
+		.bb-icons{
+			position: relative;
+			margin-top: 10px;
+			line-height: 20px;
+		
+			a{
+				width: 24px;
+				margin-left: 8px; 
+				opacity: 0.5;
+			}
+		}
+
+	}
+
+	.bb-info-text .span12 {
+		margin-bottom: 0;
+		p {
+			margin: 0;
+		}
+	}
+		
 }
+
+@media (max-width: 767px) {
+	
+}
+
+@media (max-width: 480px) {
+
+	.section-business-branding .bb-title-container {
+					margin-left: 0;
+					margin-top: 10px;
+				}
+				
+				.section-business-branding .bb_branding_wrap .bb-business-info {
+					float: left;
+					
+					margin-top: 10px;
+				} 
+
+				.section-business-branding .bb-branding-area-extra {
+					
+					margin-top: 10px;
+				}
+
+}
+
+
 
