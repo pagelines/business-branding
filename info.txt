@@ -25,6 +25,11 @@ Business Branding is a robust branding section giving you more options than the 
 
 == Changelog ==
 
+= 3.0.2 =
+
+* Fixed title container div displaying twice for Pagelines V2
+* Removed extra end div when image icons are displayed for DMS
+
 = 3.0.1 =
 
 * Fixed float for DMS image and code area

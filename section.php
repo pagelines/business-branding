@@ -6,7 +6,7 @@
 	Description: Branding with Business Information Section.
 	Class Name: BusinessBranding
 	Workswith: header
-	Version: 3.0.1
+	Version: 3.0.2
 	v3: true;
 	Demo: http://pagelines.ellenjanemoore.com/business-branding/
 */
@@ -622,7 +622,7 @@ Upload your logo and check the boxes to display site title and/or site descripti
 							printf( '<a target="_blank" href="%s" class="gpluslink"><img src="%s" alt="Google+"/></a>', $this->opt( 'bb_gpluslink' ), $this->base_url . '/google.png' );
 
 						pagelines_register_hook( 'bb_branding_icons_end', 'business-branding' ); // Hook
-					echo '</div>';
+					
 				}
 			?>
 			<script>
