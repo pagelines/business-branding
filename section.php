@@ -10,6 +10,7 @@
 	v3: true;
 	Demo: http://pagelines.ellenjanemoore.com/business-branding/
 */
+	
 
 /**  * Business Branding Section  *  * @package PageLines Framework  * @author
 PageLines  */ class BusinessBranding extends PageLinesSection {
