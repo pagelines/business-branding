@@ -6,7 +6,7 @@
 	Description: Branding with Business Information Section.
 	Class Name: BusinessBranding
 	Workswith: header
-	Version: 3.0.2
+	Version: 3.0.3
 	v3: true;
 	Demo: http://pagelines.ellenjanemoore.com/business-branding/
 */
@@ -446,7 +446,7 @@ Upload your logo and check the boxes to display site title and/or site descripti
 				echo '<div class="bb-title-container">';
 			if($this->opt('bb_site_title') )
 					
-				printf( '<div class="bb-site-title"><a class="home bb-site-title" href="%s" title="%s">%s</a></div>', esc_url(home_url()), __('Home','business-branding'), get_bloginfo('name'));
+				printf( '<div class="bb-site-title"><a class="home bb-site-title" href="%s" >%s</a></div>', esc_url(home_url()), get_bloginfo('name'));
 			if($this->opt('bb_site_description') )
 				printf( '<h6 class="bb-site-description subhead">%s</h6>', get_bloginfo('description'));						
 				echo '</div>';
@@ -495,9 +495,8 @@ Upload your logo and check the boxes to display site title and/or site descripti
 		} else {
 
 			$site_title = sprintf(
-				'<div class="bb-title-container"><a class="home bb-site-title" href="%s" title="%s">%s</a><h6 class="bb-site-description subhead">%s</h6></div>',
+				'<div class="bb-title-container"><a class="home bb-site-title" href="%s">%s</a><h6 class="bb-site-description subhead">%s</h6></div>',
 				esc_url(home_url()),
-				__('Home','pagelines'),
 				$site_name,
 				$site_desc
 			);
@@ -513,9 +512,8 @@ Upload your logo and check the boxes to display site title and/or site descripti
 		$site_desc = get_bloginfo('description');
 
 		$site_title = sprintf(
-				'<div class="bb-title-container"><a class="home bb-site-title" href="%s" title="%s">%s</a><h6 class="bb-site-description subhead">%s</h6></div>',
+				'<div class="bb-title-container"><a class="home bb-site-title" href="%s">%s</a><h6 class="bb-site-description subhead">%s</h6></div>',
 				esc_url(home_url()),
-				__('Home','business-branding'),
 				$site_name,
 				$site_desc
 			);
@@ -689,7 +687,8 @@ Upload your logo and check the boxes to display site title and/or site descripti
 
 	} else {
 
-		$site_title = sprintf( '<div class="title-container"><a class="home site-title" href="%s" title="%s">%s</a><h6 class="site-description subhead">%s</h6></div>', esc_url(home_url()), __('Home','pagelines'), get_bloginfo('name'), get_bloginfo('description'));
+
+		$site_title = sprintf( '<div class="title-container"><a class="home site-title" href="%s">%s</a><h6 class="site-description subhead">%s</h6></div>', esc_url(home_url()), get_bloginfo('name'), get_bloginfo('description'));
 
 		echo apply_filters('pagelines_site_title', $site_title, $location);
 	}
@@ -954,7 +953,7 @@ Upload your logo and check the boxes to display site title and/or site descripti
 					echo '</div><div class="branding-area-container">';
 					echo '<div class="title-container">';
 					if(ploption('business_name'))
-							printf( '<div class="site-title"><a class="home site-title" href="%s" title="%s">%s</a></div>',   esc_url(home_url()), __('Home','business-branding'), get_bloginfo('name'));
+							printf( '<div class="site-title"><a class="home site-title" href="%s" >%s</a></div>',   esc_url(home_url()),  get_bloginfo('name'));
 					if(ploption('business_description'))
 						printf( '<h6 class="site-description subhead">%s</h6>',  get_bloginfo('description'));						
 						echo '</div>';

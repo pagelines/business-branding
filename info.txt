@@ -25,6 +25,10 @@ Business Branding is a robust branding section giving you more options than the 
 
 == Changelog ==
 
+= 3.0.3 =
+
+* Fixed title link hover when displaying site title
+
 = 3.0.2 =
 
 * Fixed title container div displaying twice for Pagelines V2
