@@ -21,8 +21,13 @@ Business Branding is a robust branding section giving you more options than the 
 
 <strong>Positioning of Elements</strong> Position the site title and additional business information to create an eye-catching branding area.
 
+<strong>Version 2.1 Important Note on Update</strong> This update will affect branding areas that do not display any social icons and rss feed link. This could narrow the spacing between the bottom of the Business Branding Section and next section (possibly your navigation) especially if you already have made a css adjustment to close the spacing. To restore the height remove any adjustment you have made or uncomment the Version 2.1 items in style.less.
 
 == Changelog ==
+
+= 3.0.4 =
+
+* Fixed spacing for info lines
 
 = 3.0.3 =
 

@@ -6,11 +6,10 @@
 	Description: Branding with Business Information Section.
 	Class Name: BusinessBranding
 	Workswith: header
-	Version: 3.0.3
+	Version: 3.0.4
 	v3: true;
 	Demo: http://pagelines.ellenjanemoore.com/business-branding/
 */
-	
 
 /**  * Business Branding Section  *  * @package PageLines Framework  * @author
 PageLines  */ class BusinessBranding extends PageLinesSection {
@@ -581,23 +580,23 @@ Upload your logo and check the boxes to display site title and/or site descripti
 					if($bb_social == 'icons') {
 
 						if( $this->opt( 'bb_rsslink' ) )
-						printf( '<a target="_blank" href="%s" class="bb-rsslink"><i class="icon icon-rss"></i></a>', apply_filters( 'pagelines_branding_rssurl', get_bloginfo( 'rss2_url' ) ) );
+						printf( '<a target="_blank" href="%s" class="bb-rsslink"><i class="icon icon-rss icon-border"></i></a>', apply_filters( 'pagelines_branding_rssurl', get_bloginfo( 'rss2_url' ) ) );
 
 					
 						if( $this->opt( 'bb_twitterlink' ) )
-							printf('<a target="_blank" href="%s" class="bb-twitterlink"><i class="icon icon-twitter-sign"></i></a>', $this->opt( 'bb_twitterlink' ));
+							printf('<a target="_blank" href="%s" class="bb-twitterlink"><i class="icon icon-twitter icon-border"></i></a>', $this->opt( 'bb_twitterlink' ));
 
 						if( $this->opt( 'bb_facebooklink' ) )
-							printf('<a target="_blank" href="%s" class="bb-facebooklink"><i class="icon icon-facebook-sign"></i></a>', $this->opt( 'bb_facebooklink' ));
+							printf('<a target="_blank" href="%s" class="bb-facebooklink"><i class="icon icon-facebook icon-border"></i></a>', $this->opt( 'bb_facebooklink' ));
 
 						if( $this->opt( 'bb_linkedinlink' ) )
-							printf('<a target="_blank" href="%s" class="bb-linkedinlink"><i class="icon icon-linkedin-sign"></i></a>', $this->opt( 'bb_linkedinlink' ) );
+							printf('<a target="_blank" href="%s" class="bb-linkedinlink"><i class="icon icon-linkedin icon-border"></i></a>', $this->opt( 'bb_linkedinlink' ) );
 
 						if( $this->opt( 'bb_youtubelink' ) )
-							printf('<a target="_blank" href="%s" class="bb-youtubelink"><i class="icon icon-youtube"></i></a>', $this->opt( 'bb_youtubelink' ) );
+							printf('<a target="_blank" href="%s" class="bb-youtubelink"><i class="icon icon-youtube icon-border"></i></a>', $this->opt( 'bb_youtubelink' ) );
 
 						if( $this->opt( 'bb_gpluslink' ) )
-							printf( '<a target="_blank" href="%s" class="bb-gpluslink"><i class="icon icon-google-plus-sign"></i></a>', $this->opt( 'bb_gpluslink' ));
+							printf( '<a target="_blank" href="%s" class="bb-gpluslink"><i class="icon icon-google-plus icon-border"></i></a>', $this->opt( 'bb_gpluslink' ));
 
 					} else {
 
@@ -624,9 +623,7 @@ Upload your logo and check the boxes to display site title and/or site descripti
 					
 				}
 			?>
-			<script>
-				jQuery('.bb-icons a').hover(function(){ jQuery(this).fadeTo('fast', 1); },function(){ jQuery(this).fadeTo('fast', 0.5);});
-			</script>
+			
 		<?php	
 
 	}	
