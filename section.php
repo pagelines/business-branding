@@ -6,8 +6,10 @@
 	Description: Branding with Business Information Section.
 	Class Name: BusinessBranding
 	Workswith: header
-	Version: 3.0.5
-	v3: true;
+	Version: 3.0.6
+	PageLines: true
+	v3: true
+	Filter: component
 	Demo: http://pagelines.ellenjanemoore.com/business-branding/
 */
 

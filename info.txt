@@ -25,6 +25,10 @@ Business Branding is a robust branding section giving you more options than the 
 
 == Changelog ==
 
+= 3.0.6
+* Added Filter: component to classify section as a component
+* Added and PageLines: true to trigger updates
+
 = 3.0.5 =
 
 * Fixed icons from 3.0.4 version - will be adding flat colored icons next release.
