@@ -580,9 +580,8 @@ Upload your logo and check the boxes to display site title and/or site descripti
 					if($bb_social == 'icons') {
 
 						 if( $this->opt( 'bb_rsslink' ) )
-                        printf( '<a target="_blank" href="%s" class="bb-rsslink"><i class="icon icon-rss"></i></a>', apply_filters( 'pagelines_branding_rssurl', get_bloginfo( 'rss2_url' ) ) );
- 
-                     
+                        	printf( '<a target="_blank" href="%s" class="bb-rsslink"><i class="icon icon-rss"></i></a>', apply_filters( 'pagelines_branding_rssurl', get_bloginfo( 'rss2_url' ) ) );
+    
                         if( $this->opt( 'bb_twitterlink' ) )
                             printf('<a target="_blank" href="%s" class="bb-twitterlink"><i class="icon icon-twitter-sign"></i></a>', $this->opt( 'bb_twitterlink' ));
  
