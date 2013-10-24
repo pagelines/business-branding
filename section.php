@@ -6,7 +6,7 @@
 	Description: Branding with Business Information Section.
 	Class Name: BusinessBranding
 	Workswith: header
-	Version: 3.0.6
+	Version: 3.1
 	PageLines: true
 	v3: true
 	Filter: component
@@ -38,9 +38,13 @@ Upload your logo and check the boxes to display site title and/or site descripti
 
 		$options = array();
 
-		
-		
-
+		$options[] = array(
+            'key'           => 'bb_general_directions',
+            'title'			=>	__('Business Branding General Directions' , 'business-branding'),
+            'type'          => 'template',
+           	'span'			=>	2,
+            'template'      => $bb_general_directions
+        );
 		$options[] = array(
 	            'key'           => 'bb_general',
 	            'type'          => 'multi', 
@@ -63,17 +67,8 @@ Upload your logo and check the boxes to display site title and/or site descripti
 	            )
 	       	);
 		
-			$options[] = array(
-            'key'           => 'bb_general_directions',
-            'title'			=>	__('Business Branding General Directions' , 'business-branding'),
-            'type'          => 'template',
-           	'span'			=>	2,
-            'template'      => $bb_general_directions
-        );
-		
-		
-
 		$options[] = array(
+				'key'           => 'bb_logo_options',
 				'type' 			=> 'multi',
 				'title' 		=> 'Branding Logo and Title Area Options',
 				'span'			=>	2,
@@ -126,8 +121,6 @@ Upload your logo and check the boxes to display site title and/or site descripti
 				),
 		);
 
-		
-
 		$options[] = array(
             'key'           => 'bb_logo_directions',
             'title'			=>	'Branding Logo and Title Area Directions',
@@ -138,6 +131,7 @@ Upload your logo and check the boxes to display site title and/or site descripti
 
  	
 		$options[] = array(
+			'key'           => 'bb_code_area',
 			'type' 			=> 'multi',
 			'title' 		=> 'Image and Code Area (Shows to right of Branding Area and left of Info Area)',
 			'span'			=>	2,
@@ -185,7 +179,151 @@ Upload your logo and check the boxes to display site title and/or site descripti
 				)
 			);
 
+
+	//	$bb_lines = ($this->opt('bb_count')) ? $this->opt('bb_count') : $this->default_limit;
+		
+	//	for($i = 1; $i <= $bb_lines; $i++){
+
+	//		$opts = array(
+
+	//			array(
+	//				'key'		=> 'bb_icon_'.$i,
+	//				'label'		=> __( 'Info Text Icon. Choose from the Font Awesome Library. (Optional)', 'business-branding' ),
+	//				'type'		=> 'select_icon',
+	//			),
+	//			array(
+	//				'key'		=> 'bb_text_'.$i,
+	//				'label'	=> __( 'Info Text. Can use shortcodes and html as well as text.', 'business-branding' ),
+	//				'type'	=> 'text'
+	//			),
+	//			array(
+	//				'key'		=> 'bb_style_'.$i,
+	//				'default'	=> 'p',
+	//				'label'		=> __( 'Info Text Style (Default is paragraph size - p)', 'business-branding' ),
+	//				'type'		=> 'select',
+
+	//	            'opts'=> array(
+	//	                'h2'			=> array('name'	=>'h2'),
+	//					'h3'			=> array('name'	=>'h3'),
+	//					'h4'			=> array('name'	=>'h4'),
+	//					'h5'			=> array('name'	=>'h5'),
+	//					'p'				=> array('name'	=>'p')
+	//	            ),
+	//			),
+	//		);
+
+			
+			
+
+	//		$options[] = array(
+	//			'title' 	=> __( 'Info ', 'business-branding' ) . $i,
+	//			'type' 		=> 'multi',
+	//			'span'		=> 2,
+	//			'opts' 		=> $opts,
+
+	//		);
+
+	//	}
+
+	$options[] = array(
+			'key'           => 'bb_lines',
+			'title' => __( 'Branding Info Lines (Displays right side of section)', 'business-branding' ),
+			'type'	=> 'multi',
+			'span'	=>	1,
+			'opts'	=> array(
+				array(
+					'key'			=> 'bb_info_width',
+					'type' 			=> 'count_select',
+					'count_start'	=> 1,
+					'count_number'	=> 12,
+					'default'		=> 4,
+					'label' 	=> __( 'Number of columns to span (out of 12)', 'business-branding' ),
+				),
+				 array(
+	                    'key'           => 'bb_info_color',
+           				'type'          => 'color', 
+           				'default'		=> '000',
+						'label'			=> __( 'Info Area Text Color', 'business-branding' ),
+	                ),
+				
+				array(
+					'key'		=> 'bb_justify',
+					'default'	=> 'right',
+					'label'		=> __( 'Info Text Justify (Default is Right)', 'business-branding' ),
+					'type'		=> 'select',
+
+		            'opts'=> array(
+		                'right'			=> array('name'	=>'right'),
+						'left'			=> array('name'	=>'left'),
+						'center'		=> array('name'	=>'center'),
+						
+		            ),
+
+		        ),  
+	        	array(
+						'key'	=> 'bb_info_top',
+						'type'	=> 'text',
+						'size'	=> 'small',
+						'label'	=> __( 'Info Lines Margin Top (in pixels)', 'business-branding' ),
+						
+					),  
+				array(
+					'key'			=> 'bb_count',
+					'type' 			=> 'count_select',
+					'count_start'	=> 1,
+					'count_number'	=> 6,
+					'default'		=> 3,
+					'label' 		=> __( '<strong>DEPRECATED as of DMS 1.1: No need to use.</strong>  Number of Info Lines to Configure (up to 6)', 'business-branding' ),
+					'help'			=> __( '<strong>NOTE:</strong> This option only for DMS versions prior to 1.1. Instead, add lines in next option section.', 'business-branding' ),
+				),
+
+				
+			)
+
+		);
+
+	$options[] = array(
+			'key'		=> 'bb_info_array',
+	    	'type'		=> 'accordion', 
+			'span'		=> 2,
+			'title'		=> __('Business Branding Info Lines', 'business-branding'), 
+			'post_type'	=> __('Info Line', 'business-branding'),
+			 
+			'opts'	=> array(
+				array(
+					'key'		=> 'icon',
+					'label'		=> __( 'Info Text Icon. Choose from the Font Awesome Library. (Optional)', 'business-branding' ),
+					'type'		=> 'select_icon',
+				),
+				array(
+					'key'		=> 'text',
+					'label'	=> __( 'Info Text. Can use shortcodes and html as well as text.', 'business-branding' ),
+					'type'	=> 'text'
+				),
+				array(
+					'key'		=> 'style',
+					'default'	=> 'p',
+					'label'		=> __( 'Info Text Style (Default is paragraph size - p)', 'business-branding' ),
+					'type'		=> 'select',
+
+		            'opts'=> array(
+		                'h2'			=> array('name'	=>'h2'),
+						'h3'			=> array('name'	=>'h3'),
+						'h4'			=> array('name'	=>'h4'),
+						'h5'			=> array('name'	=>'h5'),
+						'p'				=> array('name'	=>'p')
+		            ),
+				),
+				
+
+			)
+	    );
+		
+
+	
+			
 		$options[] = array(
+			'key'           => 'bb_social_links',
 			'type' 			=> 'multi',
 			'title' 		=> 'Social Links (Displays right side of section and under Info Lines.)',
 			
@@ -197,7 +335,7 @@ Upload your logo and check the boxes to display site title and/or site descripti
 						'type'		=> 'select',
 
 			            'opts'=> array(
-			                'icons'			=> array('name'	=>'icon font'),
+			                'icons'			=> array('name'	=>'icon font (info lines color)'),
 							'images'		=> array('name'	=>'images'),
 							
 							
@@ -246,113 +384,7 @@ Upload your logo and check the boxes to display site title and/or site descripti
 					
 				)
 			);
-		
-		
-
-	
-
-		$bb_lines = ($this->opt('bb_count')) ? $this->opt('bb_count') : $this->default_limit;
-		
-		for($i = 1; $i <= $bb_lines; $i++){
-
-			$opts = array(
-
-				array(
-					'key'		=> 'bb_icon_'.$i,
-					'label'		=> __( 'Info Text Icon. Choose from the Font Awesome Library. (Optional)', 'business-branding' ),
-					'type'		=> 'select_icon',
-				),
-				array(
-					'key'		=> 'bb_text_'.$i,
-					'label'	=> __( 'Info Text. Can use shortcodes and html as well as text.', 'business-branding' ),
-					'type'	=> 'text'
-				),
-				array(
-					'key'		=> 'bb_style_'.$i,
-					'default'	=> 'p',
-					'label'		=> __( 'Info Text Style (Default is paragraph size - p)', 'business-branding' ),
-					'type'		=> 'select',
-
-		            'opts'=> array(
-		                'h2'			=> array('name'	=>'h2'),
-						'h3'			=> array('name'	=>'h3'),
-						'h4'			=> array('name'	=>'h4'),
-						'h5'			=> array('name'	=>'h5'),
-						'p'				=> array('name'	=>'p')
-		            ),
-				),
-			);
-
 			
-			
-
-			$options[] = array(
-				'title' 	=> __( 'Info ', 'business-branding' ) . $i,
-				'type' 		=> 'multi',
-				'span'		=> 2,
-				'opts' 		=> $opts,
-
-			);
-
-		}
-
-
-			$options[] = array(
-
-			'title' => __( 'Branding Info Lines (Displays right side of section)', 'business-branding' ),
-			'type'	=> 'multi',
-			'span'	=>	1,
-			'opts'	=> array(
-				array(
-					'key'			=> 'bb_info_width',
-					'type' 			=> 'count_select',
-					'count_start'	=> 1,
-					'count_number'	=> 12,
-					'default'		=> 4,
-					'label' 	=> __( 'Number of columns to span (out of 12)', 'business-branding' ),
-				),
-				 array(
-	                    'key'           => 'bb_info_color',
-           				'type'          => 'color', 
-           				'default'		=> '',
-						'label'			=> __( 'Info Area Text Color', 'business-branding' ),
-	                ),
-				array(
-					'key'			=> 'bb_count',
-					'type' 			=> 'count_select',
-					'count_start'	=> 1,
-					'count_number'	=> 6,
-					'default'		=> 3,
-					'label' 	=> __( 'Number of Info Lines to Configure (up to 6)', 'business-branding' ),
-				),
-				array(
-					'key'		=> 'bb_justify',
-					'default'	=> 'right',
-					'label'		=> __( 'Info Text Justify (Default is Right)', 'business-branding' ),
-					'type'		=> 'select',
-
-		            'opts'=> array(
-		                'right'			=> array('name'	=>'right'),
-						'left'			=> array('name'	=>'left'),
-						'center'		=> array('name'	=>'center'),
-						
-		            ),
-
-		        ),  
-	        	array(
-						'key'	=> 'bb_info_top',
-						'type'	=> 'text',
-						'size'	=> 'small',
-						'label'	=> __( 'Info Lines Margin Top (in pixels)', 'business-branding' ),
-						
-					),  
-				
-
-				
-			)
-
-		);
-		
 		return $options;
 	}
 
@@ -362,7 +394,7 @@ Upload your logo and check the boxes to display site title and/or site descripti
 			$bb_full_width = ($this->opt('bb_background_fw')) ? $this->opt('bb_background_fw') : null;
 			$bb_justify = ($this->opt('bb_justify')) ? $this->opt('bb_justify') : 'right';
 			$bb_branding_color = ($this->opt('bb_branding_color')) ? $this->opt('bb_branding_color') : null;
-			$bb_info_color = ($this->opt('bb_info_color')) ? $this->opt('bb_info_color') : null;
+			$bb_info_color = ($this->opt('bb_info_color')) ? $this->opt('bb_info_color') : '000';
 			$bb_branding_top = ($this->opt('bb_branding_top')) ? $this->opt('bb_branding_top').'px' : '0';
 			$bb_branding_left = ($this->opt('bb_branding_left')) ? $this->opt('bb_branding_left').'px' : '10px';
 			$bb_middle_top = ($this->opt('bb_middle_top')) ? $this->opt('bb_middle_top').'px' : '0';
@@ -419,7 +451,10 @@ Upload your logo and check the boxes to display site title and/or site descripti
 
 				.section-business-branding .bb-icons a {
 					font-size: <?php echo $bb_social_size ?> ;
+
+
 				}
+				
 
 				.section-business-branding .bb-branding-area-extra {
 					
@@ -463,6 +498,7 @@ Upload your logo and check the boxes to display site title and/or site descripti
 			printf('<div class="bb-business-info span%s">', $bb_info_width);
 				$this->info_lines();
 				$this->bb_icons();
+			//	$this->bb_icons_accordion();
 
 			echo '</div></div></div></div>';
 
@@ -543,32 +579,58 @@ Upload your logo and check the boxes to display site title and/or site descripti
 	}	
 
 	function info_lines(){
-		$bb_lines = ($this->opt('bb_count')) ? $this->opt('bb_count') : $this->default_limit;
-		$output = '';
-		for($i = 1; $i <= $bb_lines; $i++) :
-			
-			$bb_style = ($this->opt('bb_style_'.$i)) ? $this->opt('bb_style_'.$i) : 'p';
-			$bb_icon = ($this->opt('bb_icon_'.$i)) ? $this->opt('bb_icon_'.$i) : false;
-			$icon_html = sprintf('<i class="icon icon-%s"></i>', $bb_icon);
-			
+
+		// The lines
+		$bb_info_array = $this->opt('bb_info_array');
 		
-			$bb_text = ($this->opt('bb_text_'.$i)) ? $this->opt('bb_text_'.$i) :null;
-			if($bb_icon != false) :
-				$bb_text = sprintf('<%s data-sync="bb_text_%s">%s %s</%s>',  $bb_style, $i, $icon_html, $bb_text, $bb_style );
+		$format_upgrade_mapping = array(
+			'style'	=> 'bb_style_%s',
+			'icon'	=> 'bb_icon_%s',
+			'text'	=> 'bb_text_%s'
+		); 
+		
+		$bb_info_array = $this->upgrade_to_array_format( 'bb_info_array', $bb_info_array, $format_upgrade_mapping, $this->opt('bb_count')); 
+		
+		// must come after upgrade
+		if( !$bb_info_array || $bb_info_array == 'false' || !is_array($bb_info_array) ){
+			$bb_info_array = array( array(), array(), array() );
+		}
+	
+		$output = '';
+		$count = 1; 
+		
+		if( is_array($bb_info_array) ){
+			
+			$info = count( $bb_info_array );
+			
+			foreach( $bb_info_array as $bb_info ){
+				$style = pl_array_get( 'style', $bb_info, 'p');
+				$icon = pl_array_get( 'icon', $bb_info );
+				$text = pl_array_get( 'text', $bb_info, null); 
+				$icon_html = sprintf('<i class="icon icon-%s"></i>', $icon);
+			
+
+			if($icon != false) :
+				$text = sprintf('<%s data-sync="bb_info_array_item%s_text">%s %s</%s>',  $style, $count, $icon_html, $text, $style );
 			else :
-				$bb_text = sprintf('<%s data-sync="bb_text_%s">%s</%s>', $bb_style, $i, $bb_text, $bb_style );
+				$text = sprintf('<%s data-sync="bb_info_array_item%s_text">%s</%s>', $style, $count, $text, $style );
 			endif;
 			$output .= sprintf(
 			'<div class="bb-line_%s span12">%s</div>' ,
-			$i,
+			$count,
 			
-			$bb_text
+			$text
 			
 			);
-		endfor;
+			$count++;
+		}
 		printf('<div class="bb-info-text row">%s</div>', $output);
-		
+
+	
+	}		
 	}
+
+	
 
 	function bb_icons() {
 		$bb_social = ($this->opt('bb_social')) ? $this->opt('bb_social') : 'icons';
@@ -594,7 +656,7 @@ Upload your logo and check the boxes to display site title and/or site descripti
                             printf('<a target="_blank" href="%s" class="bb-linkedinlink"><i class="icon icon-linkedin-sign"></i></a>', $this->opt( 'bb_linkedinlink' ) );
  
                         if( $this->opt( 'bb_youtubelink' ) )
-                            printf('<a target="_blank" href="%s" class="bb-youtubelink"><i class="icon icon-youtube"></i></a>', $this->opt( 'bb_youtubelink' ) );
+                            printf('<a target="_blank" href="%s" class="bb-youtubelink"><i class="icon icon-youtube-sign"></i></a>', $this->opt( 'bb_youtubelink' ) );
  
                         if( $this->opt( 'bb_gpluslink' ) )
                             printf( '<a target="_blank" href="%s" class="bb-gpluslink"><i class="icon icon-google-plus-sign"></i></a>', $this->opt( 'bb_gpluslink' ));
@@ -668,12 +730,12 @@ Upload your logo and check the boxes to display site title and/or site descripti
 
 	$oset = array( 'post_id' => $pagelines_ID );
 
-	if(ploption('pagelines_custom_logo', $oset) || apply_filters('pagelines_site_logo', '') || apply_filters('pagelines_logo_url', '')){
+	if(plsetting('pagelines_custom_logo', $oset) || apply_filters('pagelines_site_logo', '') || apply_filters('pagelines_logo_url', '')){
 
-		$logo = apply_filters('pagelines_logo_url', esc_url(ploption('pagelines_custom_logo', $oset) ), $location);
+		$logo = apply_filters('pagelines_logo_url', esc_url(plsetting('pagelines_custom_logo', $oset) ), $location);
 
 
-		$logo_url = ( esc_url(ploption('pagelines_custom_logo_url', $oset) ) ) ? esc_url(ploption('pagelines_custom_logo_url', $oset) ) : home_url();
+		$logo_url = ( esc_url(plsetting('pagelines_custom_logo_url', $oset) ) ) ? esc_url(plsetting('pagelines_custom_logo_url', $oset) ) : home_url();
 
 		$site_logo = sprintf('<div itemscope itemtype="http://schema.org/Organization"><a class="plbrand mainlogo-link" itemprop="url" href="%s" title="%s"><img class="mainlogo-img" itemprop="logo" src="%s" alt="%s" /></a></div>',
 			$logo_url,
@@ -907,12 +969,12 @@ Upload your logo and check the boxes to display site title and/or site descripti
 	function business_branding_less_vars($less){
 
 
-   		$business_top = (ploption('business_name_top')) ? ploption('business_name_top').'px' : '10px';
-		$business_left = (ploption('business_name_left')) ? ploption('business_name_left').'px' : '10px';
-		$branding_top = (ploption('branding_area_top')) ? ploption('branding_area_top').'px' : '10px';
-		$branding_left = (ploption('branding_area_left')) ? ploption('branding_area_left').'px' : '10px';
-		$info_top = (ploption('business_info_top')) ? ploption('business_info_top').'px' : '10px';
-		$info_justify = (ploption('business_info_justify')) ? ploption('business_info_justify') : 'right';
+   		$business_top = ($this->opt('business_name_top')) ? $this->opt('business_name_top').'px' : '10px';
+		$business_left = ($this->opt('business_name_left')) ? $this->opt('business_name_left').'px' : '10px';
+		$branding_top = ($this->opt('branding_area_top')) ? $this->opt('branding_area_top').'px' : '10px';
+		$branding_left = ($this->opt('branding_area_left')) ? $this->opt('branding_area_left').'px' : '10px';
+		$info_top = ($this->opt('business_info_top')) ? $this->opt('business_info_top').'px' : '10px';
+		$info_justify = ($this->opt('business_info_justify')) ? $this->opt('business_info_justify') : 'right';
 		$less['business-top']  = $business_top;
 		$less['business-left']  = $business_left;
 		$less['branding-top']  = $branding_top;
@@ -931,15 +993,15 @@ Upload your logo and check the boxes to display site title and/or site descripti
 
 
 
-	$business_line1 = ploption('business_info_line1');
-	$business_line2 = ploption('business_info_line2');
-	$business_line3 = ploption('business_info_line3');
-	$business_line1_style = (ploption('business_info_line1_style', $this->oset)) ? ploption('business_info_line1_style', $this->oset) : 'h2';
-	$business_line2_style = (ploption('business_info_line2_style', $this->oset)) ? ploption('business_info_line2_style', $this->oset) : 'h3';
-	$business_line3_style = (ploption('business_info_line3_style', $this->oset)) ? ploption('business_info_line3_style', $this->oset) : 'h3';
-	$branding_code = ploption('branding_area_code');
-	$branding_area_image = ploption('branding_area_image');
-	$business_image_info = ploption('business_info_image');
+	$business_line1 = $this->opt('business_info_line1');
+	$business_line2 = $this->opt('business_info_line2');
+	$business_line3 = $this->opt('business_info_line3');
+	$business_line1_style = ($this->opt('business_info_line1_style', $this->oset)) ? $this->opt('business_info_line1_style', $this->oset) : 'h2';
+	$business_line2_style = ($this->opt('business_info_line2_style', $this->oset)) ? $this->opt('business_info_line2_style', $this->oset) : 'h3';
+	$business_line3_style = ($this->opt('business_info_line3_style', $this->oset)) ? $this->opt('business_info_line3_style', $this->oset) : 'h3';
+	$branding_code = $this->opt('branding_area_code');
+	$branding_area_image = $this->opt('branding_area_image');
+	$business_image_info = $this->opt('business_info_image');
 
 
 
@@ -951,15 +1013,15 @@ Upload your logo and check the boxes to display site title and/or site descripti
 					$this->logo_with_schema();  
 					echo '</div><div class="branding-area-container">';
 					echo '<div class="title-container">';
-					if(ploption('business_name'))
+					if($this->opt('business_name'))
 							printf( '<div class="site-title"><a class="home site-title" href="%s" >%s</a></div>',   esc_url(home_url()),  get_bloginfo('name'));
-					if(ploption('business_description'))
+					if($this->opt('business_description'))
 						printf( '<h6 class="site-description subhead">%s</h6>',  get_bloginfo('description'));						
 						echo '</div>';
 					echo '<div class=branding-area-extra>';
-					if(ploption('branding_area_code'))
+					if($this->opt('branding_area_code'))
 						printf('<div class=branding-area-code>%s</div>', do_shortcode($branding_code));
-						if (ploption('branding_area_image')) 
+						if ($this->opt('branding_area_image')) 
 							printf('<img src="%s">', $branding_area_image);	
 					echo '</div></div>';				
 
@@ -976,13 +1038,13 @@ Upload your logo and check the boxes to display site title and/or site descripti
 				echo'<div class="business-info">';
 
 				echo'<div class="business-info-text">';
-				if (ploption('business_info_image')) 
+				if ($this->opt('business_info_image')) 
 					printf('<img src="%s">', $business_image_info);
-				if (ploption('business_info_line1')) 
+				if ($this->opt('business_info_line1')) 
 					printf('<%s>%s</%s>' , $business_line1_style, do_shortcode($business_line1), $business_line1_style);
-				if (ploption('business_info_line2')) 
+				if ($this->opt('business_info_line2')) 
 					printf('<%s>%s</%s>' , $business_line2_style, do_shortcode($business_line2), $business_line2_style);
-				if (ploption('business_info_line3'))
+				if ($this->opt('business_info_line3'))
 					printf('<%s>%s</%s>' , $business_line3_style, do_shortcode($business_line3), $business_line3_style);
 				echo'</div>';	
 				
@@ -990,24 +1052,24 @@ Upload your logo and check the boxes to display site title and/or site descripti
 					
 					pagelines_register_hook( 'pagelines_branding_icons_start', 'branding' ); // Hook 
 			
-					if(ploption('rsslink'))
+					if($this->opt('rsslink'))
 						printf('<a target="_blank" href="%s" class="rsslink"><img src="%s" alt="RSS"/></a>', apply_filters( 'pagelines_branding_rssurl', get_bloginfo('rss2_url') ), $this->base_url.'/rss.png' );
 					
 					if(VPRO) {
-						if(ploption('twitterlink'))
-							printf('<a target="_blank" href="%s" class="twitterlink"><img src="%s" alt="Twitter"/></a>', ploption('twitterlink'), $this->base_url.'/twitter.png');
+						if($this->opt('twitterlink'))
+							printf('<a target="_blank" href="%s" class="twitterlink"><img src="%s" alt="Twitter"/></a>', $this->opt('twitterlink'), $this->base_url.'/twitter.png');
 					
-						if(ploption('facebooklink'))
-							printf('<a target="_blank" href="%s" class="facebooklink"><img src="%s" alt="Facebook"/></a>', ploption('facebooklink'), $this->base_url.'/facebook.png');
+						if($this->opt('facebooklink'))
+							printf('<a target="_blank" href="%s" class="facebooklink"><img src="%s" alt="Facebook"/></a>', $this->opt('facebooklink'), $this->base_url.'/facebook.png');
 						
-						if(ploption('linkedinlink'))
-							printf('<a target="_blank" href="%s" class="linkedinlink"><img src="%s" alt="LinkedIn"/></a>', ploption('linkedinlink'), $this->base_url.'/linkedin.png');
+						if($this->opt('linkedinlink'))
+							printf('<a target="_blank" href="%s" class="linkedinlink"><img src="%s" alt="LinkedIn"/></a>', $this->opt('linkedinlink'), $this->base_url.'/linkedin.png');
 						
-						if(ploption('youtubelink'))
-							printf('<a target="_blank" href="%s" class="youtubelink"><img src="%s" alt="Youtube"/></a>', ploption('youtubelink'), $this->base_url.'/youtube.png');
+						if($this->opt('youtubelink'))
+							printf('<a target="_blank" href="%s" class="youtubelink"><img src="%s" alt="Youtube"/></a>', $this->opt('youtubelink'), $this->base_url.'/youtube.png');
 						
-						if(ploption('gpluslink'))
-							printf('<a target="_blank" href="%s" class="gpluslink"><img src="%s" alt="Google+"/></a>', ploption('gpluslink'), $this->base_url.'/google.png');
+						if($this->opt('gpluslink'))
+							printf('<a target="_blank" href="%s" class="gpluslink"><img src="%s" alt="Google+"/></a>', $this->opt('gpluslink'), $this->base_url.'/google.png');
 						
 						pagelines_register_hook( 'pagelines_branding_icons_end', 'branding' ); // Hook 
 				

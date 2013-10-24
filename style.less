@@ -1,3 +1,28 @@
+.form-business-branding-local,
+.form-business-branding-global, // global
+.form-settings-business-branding{ // section
+    legend{
+        display:none;
+    }
+    div[class*='opt-bb']{
+
+        display:inline-block;
+        vertical-align: top;
+        padding:10px;
+        .box-sizing(border-box);
+
+        @media(min-width:1500px) { width:33.333%;    }
+        @media(max-width:1499px) { width:33.333%;    }
+        @media(max-width:1200px) { width:50%;}
+        @media(max-width:900px)  { width:50%;    }
+        @media(max-width:767px) {
+            width:100%;
+            display: block;
+            padding:0 0 20px 0;
+        }
+    }
+}
+
 .section-business-branding{
 	h1, h2, h3, h4, h5, h6 {
 		margin: 0;
@@ -172,6 +197,5 @@
 				}
 
 }
-
 
 
