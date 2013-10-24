@@ -178,54 +178,8 @@ Upload your logo and check the boxes to display site title and/or site descripti
 
 				)
 			);
-
-
-	//	$bb_lines = ($this->opt('bb_count')) ? $this->opt('bb_count') : $this->default_limit;
 		
-	//	for($i = 1; $i <= $bb_lines; $i++){
-
-	//		$opts = array(
-
-	//			array(
-	//				'key'		=> 'bb_icon_'.$i,
-	//				'label'		=> __( 'Info Text Icon. Choose from the Font Awesome Library. (Optional)', 'business-branding' ),
-	//				'type'		=> 'select_icon',
-	//			),
-	//			array(
-	//				'key'		=> 'bb_text_'.$i,
-	//				'label'	=> __( 'Info Text. Can use shortcodes and html as well as text.', 'business-branding' ),
-	//				'type'	=> 'text'
-	//			),
-	//			array(
-	//				'key'		=> 'bb_style_'.$i,
-	//				'default'	=> 'p',
-	//				'label'		=> __( 'Info Text Style (Default is paragraph size - p)', 'business-branding' ),
-	//				'type'		=> 'select',
-
-	//	            'opts'=> array(
-	//	                'h2'			=> array('name'	=>'h2'),
-	//					'h3'			=> array('name'	=>'h3'),
-	//					'h4'			=> array('name'	=>'h4'),
-	//					'h5'			=> array('name'	=>'h5'),
-	//					'p'				=> array('name'	=>'p')
-	//	            ),
-	//			),
-	//		);
-
-			
-			
-
-	//		$options[] = array(
-	//			'title' 	=> __( 'Info ', 'business-branding' ) . $i,
-	//			'type' 		=> 'multi',
-	//			'span'		=> 2,
-	//			'opts' 		=> $opts,
-
-	//		);
-
-	//	}
-
-	$options[] = array(
+			$options[] = array(
 			'key'           => 'bb_lines',
 			'title' => __( 'Branding Info Lines (Displays right side of section)', 'business-branding' ),
 			'type'	=> 'multi',
@@ -273,35 +227,33 @@ Upload your logo and check the boxes to display site title and/or site descripti
 					'count_start'	=> 1,
 					'count_number'	=> 6,
 					'default'		=> 3,
-					'label' 		=> __( '<strong>DEPRECATED as of DMS 1.1: No need to use.</strong>  Number of Info Lines to Configure (up to 6)', 'business-branding' ),
-					'help'			=> __( '<strong>NOTE:</strong> This option only for DMS versions prior to 1.1. Instead, add lines in next option section.', 'business-branding' ),
-				),
+					'label' 		=> __( 'Number of Info Lines to Configure (up to 6)', 'business-branding' ),
+					),
 
 				
 			)
 
 		);
 
-	$options[] = array(
-			'key'		=> 'bb_info_array',
-	    	'type'		=> 'accordion', 
-			'span'		=> 2,
-			'title'		=> __('Business Branding Info Lines', 'business-branding'), 
-			'post_type'	=> __('Info Line', 'business-branding'),
-			 
-			'opts'	=> array(
+
+		$bb_lines = ($this->opt('bb_count')) ? $this->opt('bb_count') : $this->default_limit;
+		
+		for($i = 1; $i <= $bb_lines; $i++){
+
+			$opts = array(
+
 				array(
-					'key'		=> 'icon',
+					'key'		=> 'bb_icon_'.$i,
 					'label'		=> __( 'Info Text Icon. Choose from the Font Awesome Library. (Optional)', 'business-branding' ),
 					'type'		=> 'select_icon',
 				),
 				array(
-					'key'		=> 'text',
+					'key'		=> 'bb_text_'.$i,
 					'label'	=> __( 'Info Text. Can use shortcodes and html as well as text.', 'business-branding' ),
 					'type'	=> 'text'
 				),
 				array(
-					'key'		=> 'style',
+					'key'		=> 'bb_style_'.$i,
 					'default'	=> 'p',
 					'label'		=> __( 'Info Text Style (Default is paragraph size - p)', 'business-branding' ),
 					'type'		=> 'select',
@@ -314,11 +266,21 @@ Upload your logo and check the boxes to display site title and/or site descripti
 						'p'				=> array('name'	=>'p')
 		            ),
 				),
-				
+			);
 
-			)
-	    );
-		
+			
+			
+
+			$options[] = array(
+				'key'		=> 'bb_info',
+				'title' 	=> __( 'Info ', 'business-branding' ) . $i,
+				'type' 		=> 'multi',
+				'opts' 		=> $opts,
+
+			);
+
+		}
+
 
 	
 			
@@ -579,55 +541,31 @@ Upload your logo and check the boxes to display site title and/or site descripti
 	}	
 
 	function info_lines(){
-
-		// The lines
-		$bb_info_array = $this->opt('bb_info_array');
-		
-		$format_upgrade_mapping = array(
-			'style'	=> 'bb_style_%s',
-			'icon'	=> 'bb_icon_%s',
-			'text'	=> 'bb_text_%s'
-		); 
-		
-		$bb_info_array = $this->upgrade_to_array_format( 'bb_info_array', $bb_info_array, $format_upgrade_mapping, $this->opt('bb_count')); 
-		
-		// must come after upgrade
-		if( !$bb_info_array || $bb_info_array == 'false' || !is_array($bb_info_array) ){
-			$bb_info_array = array( array(), array(), array() );
-		}
-	
+		$bb_lines = ($this->opt('bb_count')) ? $this->opt('bb_count') : $this->default_limit;
 		$output = '';
-		$count = 1; 
+		for($i = 1; $i <= $bb_lines; $i++) :
+			
+			$bb_style = ($this->opt('bb_style_'.$i)) ? $this->opt('bb_style_'.$i) : 'p';
+			$bb_icon = ($this->opt('bb_icon_'.$i)) ? $this->opt('bb_icon_'.$i) : false;
+			$icon_html = sprintf('<i class="icon icon-%s"></i>', $bb_icon);
+			
 		
-		if( is_array($bb_info_array) ){
-			
-			$info = count( $bb_info_array );
-			
-			foreach( $bb_info_array as $bb_info ){
-				$style = pl_array_get( 'style', $bb_info, 'p');
-				$icon = pl_array_get( 'icon', $bb_info );
-				$text = pl_array_get( 'text', $bb_info, null); 
-				$icon_html = sprintf('<i class="icon icon-%s"></i>', $icon);
-			
-
-			if($icon != false) :
-				$text = sprintf('<%s data-sync="bb_info_array_item%s_text">%s %s</%s>',  $style, $count, $icon_html, $text, $style );
+			$bb_text = ($this->opt('bb_text_'.$i)) ? $this->opt('bb_text_'.$i) :null;
+			if($bb_icon != false) :
+				$bb_text = sprintf('<%s data-sync="bb_text_%s">%s %s</%s>',  $bb_style, $i, $icon_html, $bb_text, $bb_style );
 			else :
-				$text = sprintf('<%s data-sync="bb_info_array_item%s_text">%s</%s>', $style, $count, $text, $style );
+				$bb_text = sprintf('<%s data-sync="bb_text_%s">%s</%s>', $bb_style, $i, $bb_text, $bb_style );
 			endif;
 			$output .= sprintf(
 			'<div class="bb-line_%s span12">%s</div>' ,
-			$count,
+			$i,
 			
-			$text
+			$bb_text
 			
 			);
-			$count++;
-		}
+		endfor;
 		printf('<div class="bb-info-text row">%s</div>', $output);
-
-	
-	}		
+		
 	}
 
 	
