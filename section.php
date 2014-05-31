@@ -6,7 +6,7 @@
 	Description: Branding with Business Information Section.
 	Class Name: BusinessBranding
 	Workswith: header
-	Version: 3.1
+	Version: 3.1.1
 	PageLines: true
 	v3: true
 	Filter: component
@@ -343,6 +343,11 @@ Upload your logo and check the boxes to display site title and/or site descripti
 						'type' 			=> 'text',
 						'label' 		=> __( 'Google Plus URL', 'business-branding' ),
 					),
+					array(
+						'key'			=> 'bb_pinterestlink',
+						'type' 			=> 'text',
+						'label' 		=> __( 'Pinterest URL', 'business-branding' ),
+					),
 					
 				)
 			);
@@ -598,6 +603,9 @@ Upload your logo and check the boxes to display site title and/or site descripti
  
                         if( $this->opt( 'bb_gpluslink' ) )
                             printf( '<a target="_blank" href="%s" class="bb-gpluslink"><i class="icon icon-google-plus-sign"></i></a>', $this->opt( 'bb_gpluslink' ));
+ 						
+ 						if( $this->opt( 'bb_pinterestlink' ) )
+                            printf( '<a target="_blank" href="%s" class="bb-pinterestlink"><i class="icon icon-pinterest-square"></i></a>', $this->opt( 'bb_pinterestlink' ));
  
                    } else {
 
@@ -620,9 +628,12 @@ Upload your logo and check the boxes to display site title and/or site descripti
 						if( $this->opt( 'bb_gpluslink' ) )
 							printf( '<a target="_blank" href="%s" class="gpluslink"><img src="%s" alt="Google+"/></a>', $this->opt( 'bb_gpluslink' ), $this->base_url . '/google.png' );
 
-						pagelines_register_hook( 'bb_branding_icons_end', 'business-branding' ); // Hook
-					
+						if( $this->opt( 'bb_pinterestlink' ) )
+							printf( '<a target="_blank" href="%s" class="pinterestlink"><img src="%s" alt="Pinterest+"/></a>', $this->opt( 'bb_pinterestlink' ), $this->base_url . '/pinterest.png' );
+
 				}
+				pagelines_register_hook( 'bb_branding_icons_end', 'business-branding' ); // Hook
+					
 			?>
 			
 		<?php	
