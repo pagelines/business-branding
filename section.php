@@ -6,7 +6,7 @@
 	Description: Branding with Business Information Section.
 	Class Name: BusinessBranding
 	Workswith: header
-	Version: 3.1.1
+	Version: 3.1.2
 	PageLines: true
 	v3: true
 	Filter: component

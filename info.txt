@@ -25,6 +25,9 @@ Business Branding is a robust branding section giving you more options than the 
 
 == Changelog ==
 
+= 3.1.2 =
+* Changed icon for Business Branding
+
 = 3.1.1 =
 * Moved bb_branding_icons_end hook to display properly
 * Added Pinterest option
